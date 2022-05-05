@@ -1,0 +1,21 @@
+# Версия docker-compose
+version: '3'
+# Список наших сервисов (контейнеров)
+services:
+    artifactory:
+      # используем последний стабильный образ artifactory
+        image: docker.bintray.io/jfrog/artifactory-oss:latest
+        restart: always
+        # маршрутизируем порты
+        ports:
+            - "8081:8081"
+            - "8082:8082"
+        # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
+        volumes:
+            - /opt/artifactory/var/:/var/opt/jfrog/artifactory
+
+# docker run --name artifactory --restart="always" -v /opt/artifactory/var/:/var/opt/jfrog/artifactory -d -p 8081:8081 -p 8082:8082 docker.bintray.io/jfrog/artifactory-oss:latest
+# docker-compose up -d для запуска
+# docker-compose down для остановки
+# docker ps для проверки контейнера (ключ -a если нет среди запущенных)
+# docker logs -f artifactory для просмотра логов
