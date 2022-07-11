@@ -66,23 +66,41 @@ jf rt del --spec artifactory/test_files_folders.aql --url=$ARTIFACTORY_URL --use
 cat artifactory/test_files_folders.aql
 
 {
+
 "files": [{
+
     "aql": {
+    
          "items.find": {
+         
              "repo": "test",
+             
              "name": { "$match": "4*" },
+             
              "created": {
+             
                  "$before": "5d"
+                 
              },
+             
              "type": "any",
+             
             "$or": [{
+            
     "path": { "$match": "test-server/main" },
+    
     "path": { "$match": "test-server/test-01" },
+    
     "path": { "$match": "test-server/test-02" },
+    
     "path": { "$match": "test-server/test-03" },
+    
        }]
+       
          }
+         
     }
+    
 }]}
 # Также в качестве альтернативы был создан скрипт на основе curl запроса, но он менее юзабельный, так как предполагает постоянное введение конечной даты в милисекундах и может удалять только файлы, при этом оставляя папки пустыми:
 
