@@ -111,4 +111,4 @@ curl -X DELETE -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD $RESULTS
 
 online convertor date to milisec -> https://currentmillis.com/
 
-`
+
