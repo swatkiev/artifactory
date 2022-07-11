@@ -102,6 +102,7 @@ cat artifactory/test_files_folders.aql
     }
     
 }]}
+
 # Также в качестве альтернативы был создан скрипт на основе curl запроса, но он менее юзабельный, так как предполагает постоянное введение конечной даты в милисекундах и может удалять только файлы, при этом оставляя папки пустыми:
 
 RESULTS=`curl -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD "http://127.0.0.1:8081/artifactory/api/search/creation?from=$date_in_milisec_from&to=$date_in_milisec_to&repos=test" | grep /test-server | grep uri | awk '{print $3}' | sed s'/.$//' | sed s'/.$//' | sed -r 's/^.{1}//' | sed -r 's|/api/storage||'`
