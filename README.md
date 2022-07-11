@@ -103,12 +103,10 @@ cat artifactory/test_files_folders.aql
     
 }]}
 
-# Также в качестве альтернативы был создан скрипт на основе curl запроса, но он менее юзабельный, так как предполагает постоянное введение конечной даты в милисекундах и может удалять только файлы, при этом оставляя папки пустыми:
+# Также в качестве альтернативы был создан скрипт на основе curl запроса, но он менее юзабельный, так как предполагает постоянное введение конечной даты в милисекундах и может удалять только файлы, при этом оставляя папки пустыми (с веб-интерфейса команду не копировать, некоторые символы неверно отображаются):
 
 RESULTS=`curl -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD "http://127.0.0.1:8081/artifactory/api/search/creation?from=$date_in_milisec_from&to=$date_in_milisec_to&repos=test" | grep /test-local-repository | grep uri | awk '{print $3}' | sed s'/.$//' | sed s'/.$//' | sed -r 's/^.{1}//' | sed -r 's|/api/storage||'`
 
 curl -X DELETE -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD $RESULTS
 
 online convertor date to milisec -> https://currentmillis.com/
-
-
