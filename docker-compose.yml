@@ -5,6 +5,7 @@ services:
     artifactory:
       # используем последний стабильный образ artifactory
         image: docker.bintray.io/jfrog/artifactory-oss:latest
+        container_name: artifactory
         restart: always
         # маршрутизируем порты
         ports:
