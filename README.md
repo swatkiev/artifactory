@@ -112,3 +112,5 @@ curl -X DELETE -u $ARTIFACTORY_USER:$ARTIFACTORY_PASSWORD $RESULTS
 online convertor date to milisec -> https://currentmillis.com/
 
 online convertor date to unixtimestamp ->https://www.unixtimestamp.com/ (ex. date -d @1581077532 +%Y-%m-%d)
+
+online calculator CHMOD -> https://chmod-calculator.com/
